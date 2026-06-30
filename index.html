@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Green Earth</title>
+    <!--  DaisyUI and Tailwind CSS CDN Link-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <header>
+      <!-- Navbar -->
+      <nav class="bg-[#15803D]">
+        <div
+          class="flex flex-col md:flex-row justify-between items-center text-white w-11/12 mx-auto py-6 gap-4"
+        >
+          <h2 class="text-2xl font-semibold">Green Earth</h2>
+          <ul class="flex flex-col md:flex-row gap-4 md:gap-6">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Pant a Tree</a></li>
+          </ul>
+          <button
+            class="btn bg-[#FACC15] font-semibold border-none rounded-3xl text-[#15803D] px-5 py-3 w-33 h-11"
+          >
+            Plan a Tree
+          </button>
+        </div>
+      </nav>
+
+      <!--banner -->
+      <section class="bg-[#CFF0DC]">
+        <div class="flex flex-col md:flex-row justify-between items-end">
+          <div class="hidden md:block">
+            <img
+              src="./assets/hero-leaf1.png"
+              alt="lots of leaf"
+              class="w-full"
+            />
+          </div>
+          <div class="space-y-6 px-4 py-12 md:p-25 text-center">
+            <h1 class="text-5xl font-bold">Plant a Tree, Grow a Future</h1>
+            <p>
+              Join our mission to plant 1 million trees and make the Earth
+              greener for future generations.
+            </p>
+            <button
+              class="btn bg-[#FACC15] font-semibold border-none rounded-3xl text-[#15803D] px-5 py-3 w-33 h-11"
+            >
+              Get Involved
+            </button>
+          </div>
+          <div class="hidden md:block">
+            <img
+              src="./assets/hero-leaf1.png"
+              alt="lots of leaf"
+              class="w-full"
+            />
+          </div>
+        </div>
+      </section>
+    </header>
+  </body>
+</html>
