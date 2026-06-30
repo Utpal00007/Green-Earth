@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Green Earth</title>
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="./styles.css" />
     <!--  DaisyUI and Tailwind CSS CDN Link-->
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@5"
@@ -20,7 +22,7 @@
       referrerpolicy="no-referrer"
     />
   </head>
-  <body>
+  <body class="inter-font">
     <header>
       <!-- Navbar -->
       <nav class="bg-[#15803D]">
@@ -334,6 +336,38 @@
                 <span>Total </span>
                 <span>৳1000</span>
               </div>
+            </div>
+          </div>
+        </div>
+
+        <!--  About the Campaign  -->
+        <div class="mt-25 w-11/12 mx-auto">
+          <h2 class="text-[#1F2937] font-semibold text-3xl text-center">
+            About the Campaign
+          </h2>
+          <div
+            class="flex lg:flex-row flex-col justify-center items-center gap-10 mt-10"
+          >
+            <div class="h-auto w-full md:w-100 lg:w-133">
+              <img
+                src="./assets/about.png"
+                alt="Tip of a tree branch "
+                class="w-full h-full"
+              />
+            </div>
+            <div class="w-full lg:w-133 space-y-5">
+              <p class="text-[#1F2937]">
+                Green Earth is a global tree plantation initiative dedicated to
+                fighting climate change. Since our start, we’ve planted over
+                500,000 trees worldwide. By joining our campaign, you help
+                restore forests, create habitats for wildlife, and combat global
+                warming.
+              </p>
+              <ul class="ml-8 text-[#1F2937]">
+                <li class="list-disc">Restoration of natural habitats</li>
+                <li class="list-disc">Improvement of air quality</li>
+                <li class="list-disc">Support for local communities</li>
+              </ul>
             </div>
           </div>
         </div>
