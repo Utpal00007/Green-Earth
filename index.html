@@ -93,7 +93,7 @@
           <div class="text-xl rounded-lg w-full lg:w-64">
             <h2 class="text-xl font-semibold">Categories</h2>
             <div class="w-full lg:w-64 mt-4">
-              <ul class="space-y-2">
+              <ul id="category-container" class="space-y-2">
                 <li>
                   <button
                     class="w-full bg-[#15803D] text-white rounded-lg text-center lg:text-left px-3 py-2 rounded-mb"
@@ -177,6 +177,7 @@
 
           <!-- Cards Start From Here  -->
           <div
+            id="plant-container"
             class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 rounded-lg"
           >
             <!-- card-1 -->
@@ -316,7 +317,7 @@
           <!-- Right Cart  -->
           <div class="h-full lg:w-94 w-full rounded-lg bg-white p-3">
             <h2 class="text-xl font-semibold mb-2">Your Cart</h2>
-            <div class="space-y-4 w-full">
+            <div id="cart-container" class="space-y-4 w-full">
               <div
                 class="bg-[#F0FDF4] p-2 flex justify-between items-center w-full"
               >
@@ -336,7 +337,7 @@
               <div class="border-b border-[#1F2937]"></div>
               <div class="flex justify-between text-[#1F2937] text-base">
                 <span>Total </span>
-                <span>৳1000</span>
+                <span id="total-price">৳0</span>
               </div>
             </div>
           </div>
@@ -453,5 +454,7 @@
         © 2025 Green Earth. All Rights Reserved.
       </div>
     </footer>
+
+    <script src="./script/script.js"></script>
   </body>
 </html>
