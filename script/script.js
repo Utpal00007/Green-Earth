@@ -10,6 +10,21 @@ const loadCategories = () => {
 
 const loadPlants = (id) => {
   const url = `https://openapi.programming-hero.com/api/category/${id}`;
+
+  //Get all category buttons
+  const categoryBtns = document.querySelectorAll(".btn-category");
+
+  //remove active class from other buttons
+  categoryBtns.forEach((btn) => {
+    btn.classList.remove("active");
+  });
+
+  //   find clicked button
+  const currentBtn = document.getElementById(`category-btn-${id}`);
+  //added active class on button
+  console.log(currentBtn);
+  currentBtn.classList.add("active");
+
   fetch(url)
     .then((res) => res.json())
     .then((data) => displayPlants(data.plants));
@@ -34,8 +49,8 @@ const displayCategories = (categories) => {
     const categoryBtn = document.createElement("div");
     categoryBtn.innerHTML = ` 
                 <li>
-                  <button onclick= "loadPlants(${category.id})"
-                    class="w-full text-[#1F2937] rounded-lg text-center lg:text-left px-3 py-2 rounded-mb"
+                  <button id="category-btn-${category.id}"  onclick="loadPlants(${category.id})"
+                    class="w-full text-[#1F2937] rounded-lg text-center lg:text-left px-3 py-2 rounded-mb btn-category"
                   >
                     ${category.category_name}
                   </button>
