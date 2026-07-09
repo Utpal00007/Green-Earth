@@ -8,22 +8,26 @@ const loadCategories = () => {
 
 // load plants
 
-const loadPlants = (id) => {
+const loadPlants = (id, makeActive = true) => {
+  // Show spinner while loading and hide plant container
+  document.getElementById("plant-container").classList.add("hidden");
+  document.getElementById("loading-spinner").classList.remove("hidden");
+
   const url = `https://openapi.programming-hero.com/api/category/${id}`;
+  if (makeActive) {
+    //Get all category buttons
+    const categoryBtns = document.querySelectorAll(".btn-category");
 
-  //Get all category buttons
-  const categoryBtns = document.querySelectorAll(".btn-category");
+    //remove active class from other buttons
+    categoryBtns.forEach((btn) => {
+      btn.classList.remove("active");
+    });
 
-  //remove active class from other buttons
-  categoryBtns.forEach((btn) => {
-    btn.classList.remove("active");
-  });
-
-  //   find clicked button
-  const currentBtn = document.getElementById(`category-btn-${id}`);
-  //added active class on button
-  console.log(currentBtn);
-  currentBtn.classList.add("active");
+    //   find clicked button
+    const currentBtn = document.getElementById(`category-btn-${id}`);
+    //added active class on button
+    currentBtn.classList.add("active");
+  }
 
   fetch(url)
     .then((res) => res.json())
@@ -92,6 +96,9 @@ const displayPlants = (plants) => {
 
     plantContainer.append(plantCard);
   });
+  //   Show plant container  while loading and hide spinner
+  document.getElementById("plant-container").classList.remove("hidden");
+  document.getElementById("loading-spinner").classList.add("hidden");
 };
 
 // display modal
@@ -119,4 +126,4 @@ const displayFoodsDetails = (plant) => {
 };
 
 loadCategories();
-loadPlants(3);
+loadPlants(9, false);
