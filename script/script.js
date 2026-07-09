@@ -14,6 +14,16 @@ const loadPlants = (id) => {
     .then((res) => res.json())
     .then((data) => displayPlants(data.plants));
 };
+
+//load plants details
+
+const loadPlantsDetails = (id) => {
+  const url = `https://openapi.programming-hero.com/api/plant/${id}`;
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => displayFoodsDetails(data.plants));
+};
+
 // display categories  and  plants
 
 const displayCategories = (categories) => {
@@ -42,11 +52,9 @@ const displayPlants = (plants) => {
   plantContainer.innerHTML = "";
 
   plants.forEach((plant) => {
-    console.log(plant); // Check that each plant is coming
-
     const plantCard = document.createElement("div");
-
-    plantCard.innerHTML = ` <div class="bg-white rounded-lg p-3">
+    plantCard.innerHTML = ` 
+            <div onclick="loadPlantsDetails(${plant.id})" class="bg-white rounded-lg p-3">
               <div class=""><img src="${plant.image}" alt="" class="w-full h-46 rounded-lg object-cover"></div>
               <div class="space-y-3">
                 <h2 class="mt-3 text-base font-semibold">${plant.name}</h2>
@@ -56,8 +64,8 @@ const displayPlants = (plants) => {
                 <div class="flex justify-between mb-3 font-semibold text-sm">
                   <span class="bg-[#DCFCE7] rounded-xl py-1 px-2"
                     >${plant.category}</span
-                  >৳
-                  <span>${plant.price}</span>
+                  >
+                  <p>৳<span>${plant.price}</span></p>
                 </div>
               </div>
               <button
@@ -69,6 +77,30 @@ const displayPlants = (plants) => {
 
     plantContainer.append(plantCard);
   });
+};
+
+// display modal
+const displayFoodsDetails = (plant) => {
+  const detailsContainer = document.getElementById("details-container");
+  detailsContainer.innerHTML = ` 
+            <div onclick="loadPlantsDetails(${plant.id})" class="bg-white rounded-lg p-3">
+              <div class=""><img src="${plant.image}" alt="" class="w-full h-46 rounded-lg object-cover"></div>
+              <div class="space-y-3">
+                <h2 class="mt-3 text-base font-semibold">${plant.name}</h2>
+                <p class="text-sm text-[#1F2937]">
+                  ${plant.description}
+                </p>
+                <div class="flex justify-between mb-3 font-semibold text-sm">
+                  <span class="bg-[#DCFCE7] rounded-xl py-1 px-2"
+                    >${plant.category}</span
+                  >
+                  <p>৳<span>${plant.price}</span></p>
+                </div>
+              </div>
+              
+            </div>`;
+  const showModal = document.getElementById("plants_modal");
+  showModal.showModal();
 };
 
 loadCategories();
