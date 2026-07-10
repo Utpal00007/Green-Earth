@@ -87,7 +87,7 @@ const displayPlants = (plants) => {
                   <p>৳<span class="plant-price">${plant.price}</span></p>
                 </div>
               </div>
-              <button onClick = "addToCart(this)"
+              <button onClick = "addToCart(event,this)"
                 class="btn w-full bg-[#15803D] p-3 text-white rounded-full btn-add-to-cart"
               >
                 Add To Cart
@@ -132,18 +132,30 @@ loadPlants(9, false);
 let cart = [];
 let total = 0;
 
-const addToCart = (btn) => {
+const addToCart = (event, btn) => {
+  event.stopPropagation();
+
   const card = btn.parentNode.parentNode;
+
   const plantName = card.querySelector(".plant-name").innerText;
   const plantPrice = card.querySelector(".plant-price").innerText;
   const plantPriceNum = Number(plantPrice);
 
+  const existingItem = cart.find((item) => item.plantName === plantName);
+
   const selectedItem = {
     plantName: plantName,
     plantPrice: plantPriceNum,
+    quantity: 1,
   };
-  cart.push(selectedItem);
-  total = total + plantPriceNum;
+
+  if (existingItem) {
+    existingItem.quantity++;
+  } else {
+    cart.push(selectedItem);
+  }
+
+  total += plantPriceNum;
   displayCart(cart);
   displayTotal(total);
 };
@@ -155,7 +167,13 @@ const displayTotal = (total) => {
 // remove cart
 const removeCart = (index) => {
   total -= cart[index].plantPrice;
-  cart.splice(index, 1);
+
+  if (cart[index].quantity > 1) {
+    cart[index].quantity--;
+  } else {
+    cart.splice(index, 1);
+  }
+
   displayCart(cart);
   displayTotal(total);
 };
@@ -171,7 +189,7 @@ const displayCart = (cart) => {
               >
                 <div>
                   <h4 class="font-medium text-base">${item.plantName}</h4>
-                  <p class="text-base text-[#1F2937]">৳ <span id="">${item.plantPrice}</span> × 1</p>
+                  <p class="text-base text-[#1F2937]">৳ <span id="">${item.plantPrice}</span> ×  <span id="">${item.quantity}</span></p>
                 </div>
                 <span onclick="removeCart(${index})"><i class="fa-solid fa-x"></i></span>
               </div>
