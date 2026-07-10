@@ -84,7 +84,7 @@ const displayPlants = (plants) => {
                   <span class="bg-[#DCFCE7] rounded-xl py-1 px-2"
                     >${plant.category}</span
                   >
-                  <p>৳<span class="plant-price">${plant.price}</span></p>
+                  <p>৳ <span class="plant-price">${plant.price}</span></p>
                 </div>
               </div>
               <button onClick = "addToCart(event,this)"
@@ -116,7 +116,7 @@ const displayFoodsDetails = (plant) => {
                   <span class="bg-[#DCFCE7] rounded-xl py-1 px-2"
                     >${plant.category}</span
                   >
-                  <p>৳<span>${plant.price}</span></p>
+                  <p>৳ <span>${plant.price}</span></p>
                 </div>
               </div>
               
