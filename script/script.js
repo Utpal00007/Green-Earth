@@ -76,7 +76,7 @@ const displayPlants = (plants) => {
             <div onclick="loadPlantsDetails(${plant.id})" class="bg-white rounded-lg p-3">
               <div class=""><img src="${plant.image}" alt="" class="w-full h-46 rounded-lg object-cover"></div>
               <div class="space-y-3">
-                <h2 class="mt-3 text-base font-semibold">${plant.name}</h2>
+                <h2 class="mt-3 text-base font-semibold plant-name">${plant.name}</h2>
                 <p class="text-sm text-[#1F2937]">
                   ${plant.description}
                 </p>
@@ -84,11 +84,11 @@ const displayPlants = (plants) => {
                   <span class="bg-[#DCFCE7] rounded-xl py-1 px-2"
                     >${plant.category}</span
                   >
-                  <p>৳<span>${plant.price}</span></p>
+                  <p>৳<span class="plant-price">${plant.price}</span></p>
                 </div>
               </div>
-              <button
-                class="btn w-full bg-[#15803D] p-3 text-white rounded-full"
+              <button onClick = "addToCart(this)"
+                class="btn w-full bg-[#15803D] p-3 text-white rounded-full btn-add-to-cart"
               >
                 Add To Cart
               </button>
@@ -127,3 +127,56 @@ const displayFoodsDetails = (plant) => {
 
 loadCategories();
 loadPlants(9, false);
+
+//add to cart and calculate total
+let cart = [];
+let total = 0;
+
+const addToCart = (btn) => {
+  const card = btn.parentNode.parentNode;
+  const plantName = card.querySelector(".plant-name").innerText;
+  const plantPrice = card.querySelector(".plant-price").innerText;
+  const plantPriceNum = Number(plantPrice);
+
+  const selectedItem = {
+    plantName: plantName,
+    plantPrice: plantPriceNum,
+  };
+  cart.push(selectedItem);
+  total = total + plantPriceNum;
+  displayCart(cart);
+  displayTotal(total);
+};
+
+const displayTotal = (total) => {
+  const TotalPrice = (document.getElementById("total-price").innerHTML = total);
+};
+
+// remove cart
+const removeCart = (index) => {
+  total -= cart[index].plantPrice;
+  cart.splice(index, 1);
+  displayCart(cart);
+  displayTotal(total);
+};
+
+const displayCart = (cart) => {
+  const cartContainer = document.getElementById("cart-container");
+  cartContainer.innerHTML = "";
+
+  cart.forEach((item, index) => {
+    const cartCard = document.createElement("div");
+    cartCard.innerHTML = ` <div
+                class="bg-[#F0FDF4] p-2 flex justify-between items-center w-full rounded-lg"
+              >
+                <div>
+                  <h4 class="font-medium text-base">${item.plantName}</h4>
+                  <p class="text-base text-[#1F2937]">৳ <span id="">${item.plantPrice}</span> × 1</p>
+                </div>
+                <span onclick="removeCart(${index})"><i class="fa-solid fa-x"></i></span>
+              </div>
+               `;
+
+    cartContainer.append(cartCard);
+  });
+};

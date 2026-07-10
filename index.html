@@ -91,7 +91,11 @@
         >
           <!-- Left categories -->
           <div class="text-xl rounded-lg w-full lg:w-80">
-            <h2 class="text-xl font-semibold">Categories</h2>
+            <h2
+              class="text-xl text-center mb:text-center lg:text-left font-semibold"
+            >
+              Categories
+            </h2>
             <div class="w-full lg:w-64 mt-4">
               <ul id="category-container" class="space-y-2">
                 <li>
@@ -327,12 +331,12 @@
           <div class="h-full lg:w-100 w-full rounded-lg bg-white p-3">
             <h2 class="text-xl font-semibold mb-2">Your Cart</h2>
             <div id="cart-container" class="space-y-4 w-full">
-              <div
+              <!-- <div
                 class="bg-[#F0FDF4] p-2 flex justify-between items-center w-full"
               >
                 <div>
                   <h4 class="font-medium text-base">Mango Tree</h4>
-                  <p class="text-base text-[#1F2937]">৳500 × 1</p>
+                  <p class="text-base text-[#1F2937]">৳ <span>500</span> × 1</p>
                 </div>
                 <span><i class="fa-solid fa-x"></i></span>
               </div>
@@ -342,12 +346,14 @@
                   <p class="text-base text-[#1F2937]">৳500 × 1</p>
                 </div>
                 <span><i class="fa-solid fa-x"></i></span>
-              </div>
-              <div class="border-b border-[#1F2937]"></div>
-              <div class="flex justify-between text-[#1F2937] text-base">
-                <span>Total </span>
-                <span id="total-price">৳0</span>
-              </div>
+              </div> -->
+            </div>
+
+            <!-- Total -->
+            <div class="border-b border-[#1F2937] my-5"></div>
+            <div class="flex justify-between text-[#1F2937] text-base">
+              <span>Total </span>
+              <p>৳<span id="total-price">0</span></p>
             </div>
           </div>
         </div>
